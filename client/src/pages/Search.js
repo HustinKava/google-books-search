@@ -10,8 +10,6 @@ function Search() {
   const [book, setBook] = useState("");  
   const [result, setResult] = useState([]);  
   const apiKey = 'AIzaSyA6C5xu1fdpTkDQbkwbWXsas3rh3_sXVIs'
-  // Creating useState for book details that get set when save button is clicked
-  const [bookDetails, setBookDetails] = useState({})
 
   // Creating a handle event that will set the book state
   function handleChange(event) {  
@@ -30,24 +28,17 @@ function handleSubmit(event) {
       }) 
 }  
 
-// Grabbing the values and storing them in the bookDetails state
-function handleInputChange(event) {
-  const { name, value } = event.target;
-  setBookDetails({...bookDetails, [name]: value})
-  console.log(bookDetails)
-};
-
 // Creating a form submit button to save the book and its values
-function handleFormSubmit(event) {
-  event.preventDefault();
+function handleFormSubmit(id) {
+ const { volumeInfo } = result.filter(book => book.id === id)[0]
+ console.log(volumeInfo)
     API.saveBook({
-      title: bookDetails.title,
-      authors: bookDetails.author,
-      link: bookDetails.link,
-      image: bookDetails.image,
-      description: bookDetails.description
-    })
-    console.log('button clicked')
+      title: volumeInfo.title,
+      authors: volumeInfo.authors,
+      link: volumeInfo.infoLink,
+      image: volumeInfo.imageLinks.thumbnail,
+      description: volumeInfo.description
+    })   
 };
 
   return (
@@ -74,17 +65,12 @@ function handleFormSubmit(event) {
       <div className="row first">
         <div className="col-10">
         <div className='left'> 
-        <h5 
-        onChange={handleInputChange}
-        name="title">
+        <h5>
         {book.volumeInfo.title}
         </h5>
         <span>Authors: </span>  
         {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => {{
-          return <span 
-          key={author}         
-          onChange={handleInputChange}
-          name="authors">
+          return <span key={author}>
           {author + '. '}
           </span>
         }}) :  <h1>loading</h1>}
@@ -92,28 +78,20 @@ function handleFormSubmit(event) {
         </div>
         <div className="col">
           <div className='float-right right'>
-          <a           
-          onChange={handleInputChange}
-          name="link" 
-          href={book.accessInfo.webReaderLink} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
+          <a href={book.volumeInfo.infoLink} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
           <div className='divider'/>
-          <button onClick={handleFormSubmit} type="button" className="btn btn-secondary btn-sm">Save</button>
+          <button onClick={() =>handleFormSubmit(book.id)} type="button" className="btn btn-secondary btn-sm">Save</button>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col">
           <div className='text-center'>
-        <img           
-        onChange={handleInputChange}
-        name="image" 
-        className='img-fluid' src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.volumeInfo.title}/>
+        <img className='img-fluid' src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.volumeInfo.title}/>
           </div>
         </div>
         <div className="col-9">
-        <p           
-        onChange={handleInputChange}
-        name="description">
+        <p>
         {book.volumeInfo.description}
         </p>
         </div>
