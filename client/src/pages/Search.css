@@ -1,0 +1,51 @@
+img {
+    padding-top: 5px;
+    width: 126px !important;
+    height: 200px !important;
+}
+
+.container {
+    padding-top: 10px;
+}
+
+.G {
+    color: #4285F4;
+}
+
+.o1 {
+    color: #EA4335;
+}
+
+.o2 {
+    color: #FBBC05; 
+}
+
+.g {
+    color: #4285F4;
+}
+
+.l {
+    color: #34A853;
+}
+
+.e {
+    color: #EA4335;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.first {
+    padding-top: 10px;
+}
+
+.left {
+    margin-left: 10px;
+}
+
+.right {
+    margin-right: 10px;
+}
