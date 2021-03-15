@@ -1,9 +1,13 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+// Setting up socket.io
+const socketIo = require('socket.io');
+const http = require('http');
+// const { disconnect } = require("process");
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +29,20 @@ mongoose.connect(
   }
 );
 
-// Start the API server
-app.listen(PORT, function() {
+// Creating socket connection
+const server = http.createServer(app)
+const io = socketIo(server);
+io.on('connection', client => {
+  console.log('connected')
+
+  client.on('event', data => { console.log(data)
+  io.emit('savedBook', data)
+  });
+  
+  client.on('disconnect', () => { console.log('disconnect')});
+});
+server.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+

@@ -4,12 +4,29 @@ import API from '../utils/API';
 import Navbar from '../components/Navbar';
 import './Search.css';
 
-function Search() {
 
+function Search() {
+  
+  // making this available for all methods
+      // if nothing is inside connect it will revert to localhost
+
+  // socketConnect()
+  
   // Creating useState for books, results and api key
   const [book, setBook] = useState("");  
   const [result, setResult] = useState([]);  
   const apiKey = 'AIzaSyA6C5xu1fdpTkDQbkwbWXsas3rh3_sXVIs'
+
+
+  // useEffect(() => {
+  //   socketConnect()
+  //   // [] only does it once the component has been created
+  // },[]);
+
+  // function socketConnect () {
+  //   socket.on('savedBook', data=> {console.log('update')}    
+  //   )
+  // }
 
   // Creating a handle event that will set the book state
   function handleChange(event) {  
@@ -30,6 +47,9 @@ function handleSubmit(event) {
 // Creating a form submit button to save the book and its values
 function handleFormSubmit(id) {
  const { volumeInfo } = result.filter(book => book.id === id)[0]
+
+    API.sendUpdate(volumeInfo)
+
     API.saveBook({
       title: volumeInfo.title,
       authors: volumeInfo.authors,
