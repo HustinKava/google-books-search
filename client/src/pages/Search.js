@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';  
 import API from '../utils/API';
 import Navbar from '../components/Navbar';
-import './Search.css'
+import './Search.css';
 
 function Search() {
 
@@ -21,9 +21,8 @@ function Search() {
 // the books saved in the book state and set the result state with the searched books
 function handleSubmit(event) {  
   event.preventDefault();  
-  axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=40")  
-      .then(data => {  
-          console.log(data.data.items);  
+  axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=20")  
+      .then(data => {   
           setResult(data.data.items);  
       }) 
 }  
@@ -31,7 +30,6 @@ function handleSubmit(event) {
 // Creating a form submit button to save the book and its values
 function handleFormSubmit(id) {
  const { volumeInfo } = result.filter(book => book.id === id)[0]
- console.log(volumeInfo)
     API.saveBook({
       title: volumeInfo.title,
       authors: volumeInfo.authors,
@@ -84,6 +82,7 @@ function handleFormSubmit(id) {
           </div>
         </div>
       </div>
+      
       <div className="row">
         <div className="col">
           <div className='text-center'>
