@@ -67,11 +67,11 @@ function handleFormSubmit(id) {
         {book.volumeInfo.title}
         </h5>
         <span>Authors: </span>  
-        {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => {{
+        {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => {
           return <span key={author}>
           {author + '. '}
           </span>
-        }}) :  <h1>loading</h1>}
+        }) :  <h1>loading</h1>}
         </div>
         </div>
         <div className="col">

@@ -43,11 +43,11 @@ function Saved() {
                       {book.title}
                     </h5>
                     <span>Authors: </span>
-                    {book.authors ? book.authors.map(author => {{
+                    {book.authors ? book.authors.map(author => {
                     return <span key={author}>
                     {author + '. '}
                     </span>
-                    }}) :  <h1>loading</h1>}                    
+                    }) :  <h1>loading</h1>}                    
 
                     </div>
                     </div>
