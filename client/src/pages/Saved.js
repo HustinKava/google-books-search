@@ -14,11 +14,16 @@ function Saved() {
   function loadBooks() {
     API.getBooks()
       .then(res => 
-        // console.log(res.data)
         setBooks(res.data) 
       )
       .catch(err => console.log(err));
   };
+
+  function deleteBook(id) {
+    API.deleteBook(id)
+      .then(res => loadBooks())
+      .catch(err => console.log(err));
+  }
 
   return (
     <div>
@@ -51,7 +56,7 @@ function Saved() {
                     <div className='float-right right'>
                     <a href={book.link} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
                     <div className='divider'/>
-                    {/* <button onClick={() =>handleFormSubmit(book.id)} type="button" className="btn btn-secondary btn-sm">Save</button> */}
+                    <button onClick={() => deleteBook(book._id)} type="button" className="btn btn-secondary btn-sm">Delete</button>
                     </div>
                     </div>
                     </div>
