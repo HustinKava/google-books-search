@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- stable
+npm: true
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: JI7RRLqhdIk+f0PEaDLv9vu5Px5jcBnEHApk3Btjf3KN7d4hTy0K0cEDzXDWa4S7VPRE9mHB/igKSxS66LoczhJ2PvdAQ0qxAiNgIE8EJR8NY302cxROyhEOl8+QHfwYp1t5mlm/ueFgFAZfdpSm6tKnZIB5P0cmUO3ZjMUAVFuAkaDuReiWipI2m1b0Q18XFIqG8DwjZFujh4aE8hS8xACGFjUR2MQGLqhZ03qGTByLHTKzJnRUepRCAadQ/9qSfS10XdTASIxuogEqes8JA3gdUAtOPTCFZ/tnRCjaVAgm6uvk1ysXcZHITpYQ5VlXln74VI76lnyV63WzEeOk+Pb4qd7bIBOUN42BpPXfgbaaSdAqI0EZiG51dp4owKebcxRI7ULstDjg24LTxgrpOUpKIuwSJmlLtnnHMNHRrRilwer6XUpaWszoZrmgeX718qhNfNapb0khmOPEev49ttcLeaL3l+8VHfh56pu/ineHZNh+ILDtKiUYF8Qa5lwGp0ZLbizBTsigirEoArqYw+gKnzei0lIh2uF280S13Ly3c3BsxubNwRCBNDFTVzU1dUdRhoElrfbSrThrSo6KHpjvvlSPR4dTyNRiD/Ak/REHCtlmVt0eJceVfaC8N8x2cjWTLRhBeqll5uzzKqH/RVtu0d8BLhlO27DtxxnarG4=
+  app: secret-savannah-64299
+  on:
+    all_branches: 'true'
+    repo: HustinKava/google-books-search
+  skip_cleanup: 'true'
+script:
+- echo "skipping tests"
