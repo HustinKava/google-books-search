@@ -24,12 +24,36 @@ img {
 
 .right {
     margin-right: 10px;
+    position: absolute !important;
+    right: 0 !important;
 }
 
 h3 {
     text-align: center !important;
 }
 
-.content {
-    background-color: silver;
+.center-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.search {
+    border-style: solid !important;
+    border-color: #7cdffa !important;
+    color: #7cdffa !important;
+}
+
+.searchInput {
+    border-style: solid !important;
+    border-color: #7cdffa !important;
+}
+
+.bottom {
+    background-color: aliceblue;
+}
+
+.holder {
+    background-color: black;
 }

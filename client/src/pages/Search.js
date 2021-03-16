@@ -54,9 +54,9 @@ function handleFormSubmit(id) {
       <form onSubmit={handleSubmit}>
         
       <div className="input-group">
-      <input onChange={handleChange} type="search" className="form-control rounded" placeholder="Search for a book" aria-label="Search"
+      <input onChange={handleChange} type="search" className="form-control rounded searchInput" placeholder="Search for a book" aria-label="Search"
         aria-describedby="search-addon" />
-      <button type="submit" value='Search' className="btn btn-outline-primary">search</button>
+      <button type="submit" value='Search' className="btn search">search</button>
       </div>
 
       </form>
@@ -69,36 +69,36 @@ function handleFormSubmit(id) {
       <div className="container content" key={book.id}>
       <div className='card'>
       <div className="row first">
-        <div className="col-10">
+
+          
         <div className='left'> 
         <h5>
-        {book.volumeInfo.title}
+        <i>{book.volumeInfo.title}</i>
         </h5>
-        <span>Authors: </span>  
+        <span className='top-text'>Authors: </span>  
         {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => {
-          return <span key={author}>
+          return <span className='top-text' key={author}>
           {author + '. '}
           </span>
-        }) :  <span>No authors to display</span>}
+        }) :  <span className='top-text'>No authors to display</span>}
         </div>
-        </div>
-        <div className="col">
-          <div className='float-right right'>
-          <a href={book.volumeInfo.infoLink} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
+
+
+          <div className='right'>
+          <a href={book.volumeInfo.infoLink} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-lg"><i className="fa fa-external-link" aria-hidden="true"></i></button></a>
           <div className='divider'/>
-          <button onClick={() =>handleFormSubmit(book.id)} type="button" className="btn btn-secondary btn-sm">Save</button>
+          <button onClick={() =>handleFormSubmit(book.id)} type="button" className="btn btn-lg"><i className="fa fa-floppy-o" aria-hidden="true"></i></button>
           </div>
-        </div>
       </div>
       
       <div className="row">
-        <div className="col">
-          <div className='text-center'>
+        <div className="col bottom">
+          <div className='text-center center-image'>
         <img className='img-fluid' src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.volumeInfo.title}/>
           </div>
         </div>
         <div className="col-9">
-        <p>
+        <p className='description'>
         {book.volumeInfo.description ? book.volumeInfo.description : <span>No description available</span>}
         </p>
         </div>
