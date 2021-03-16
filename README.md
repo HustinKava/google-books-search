@@ -21,7 +21,7 @@ For this application I used the following technologies: React, JavaScript, HTML/
 
 ## Screenshots
 Functioning Application
-![Test](client/public/images/Screenshot1.GIF)
+![Test](client/public/images/Screenshot1.gif)
 
 ## View Live Website  
 Please click **[Here](https://secret-savannah-64299.herokuapp.com/)** to view the live webpage hosted on Heroku
