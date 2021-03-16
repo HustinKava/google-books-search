@@ -6,8 +6,6 @@ const PORT = process.env.PORT || 3001;
 // Setting up socket.io
 const socketIo = require('socket.io');
 const http = require('http');
-// const { disconnect } = require("process");
-
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

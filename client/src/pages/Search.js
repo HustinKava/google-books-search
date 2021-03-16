@@ -75,7 +75,7 @@ function handleFormSubmit(id) {
           return <span key={author}>
           {author + '. '}
           </span>
-        }) :  <h1>loading</h1>}
+        }) :  <span>No authors to duisplay</span>}
         </div>
         </div>
         <div className="col">
