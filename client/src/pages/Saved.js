@@ -47,7 +47,7 @@ function Saved() {
                     return <span key={author}>
                     {author + '. '}
                     </span>
-                    }) :  <h1>loading</h1>}                    
+                    }) :  <span>No authors to display</span>}                    
 
                     </div>
                     </div>
@@ -56,7 +56,9 @@ function Saved() {
                     <div className='float-right right'>
                     <a href={book.link} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
                     <div className='divider'/>
-                    <button onClick={() => deleteBook(book._id)} type="button" className="btn btn-secondary btn-sm">Delete</button>
+                    <button onClick={() => deleteBook(book._id)} type="button" className="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>
                     </div>
                     </div>
@@ -64,12 +66,12 @@ function Saved() {
                     <div className="row">
                       <div className="col">
                         <div className='text-center'>
-                      <img className='img-fluid' src={book.image} alt={book.title}/>
+                      <img className='savedImage' src={book.image} alt={book.title}/>
                         </div>
                       </div>
                       <div className="col-9">
                       <p>
-                      {book.description}
+                      {book.description ? book.description : <span>No description available</span>}
                       </p>
                       </div>
                     </div>

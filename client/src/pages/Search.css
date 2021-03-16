@@ -29,3 +29,7 @@ img {
 h3 {
     text-align: center !important;
 }
+
+.content {
+    background-color: silver;
+}

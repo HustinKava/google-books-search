@@ -66,7 +66,7 @@ function handleFormSubmit(id) {
     <div className='container'>
 
       {result.map(book => (   
-      <div className="container" key={book.id}>
+      <div className="container content" key={book.id}>
       <div className='card'>
       <div className="row first">
         <div className="col-10">
@@ -79,7 +79,7 @@ function handleFormSubmit(id) {
           return <span key={author}>
           {author + '. '}
           </span>
-        }) :  <span className='noResults'>No authors to display</span>}
+        }) :  <span>No authors to display</span>}
         </div>
         </div>
         <div className="col">
@@ -99,7 +99,7 @@ function handleFormSubmit(id) {
         </div>
         <div className="col-9">
         <p>
-        {book.volumeInfo.description}
+        {book.volumeInfo.description ? book.volumeInfo.description : <span>No description available</span>}
         </p>
         </div>
       </div>
