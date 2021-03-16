@@ -11,7 +11,9 @@ function App() {
 
   const [saved, setSaved] = useState('');
 
-  // dont need first param, then create callback function
+  // Dont need first param because we have already set it to volumeInfo that is being passed from Search.js to API.js
+  // The callback is storing the book title in the saved state so that it can be used in the Notification component for socket.io
+  // On line 24 I am passing the state as a prop to Notification.js
   API.sendUpdate(null, (data) => {
     setSaved(data)
     console.log(data)
