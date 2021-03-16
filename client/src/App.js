@@ -5,6 +5,7 @@ import Saved from '../src/pages/Saved';
 import NoMatch from '../src/pages/NoMatch';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import API from '../src/utils/API';
+import Notification from '../src/components/Notification';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <Notification saved={saved}/>
       <Switch>
 
         <Route exact path='/' component={Search}/>
