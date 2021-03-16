@@ -79,7 +79,7 @@ function handleFormSubmit(id) {
           return <span key={author}>
           {author + '. '}
           </span>
-        }) :  <span>No authors to duisplay</span>}
+        }) :  <span className='noResults'>No authors to display</span>}
         </div>
         </div>
         <div className="col">
