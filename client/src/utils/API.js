@@ -19,10 +19,14 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
-  sendUpdate: function (volumeInfo) {
-    socket.on('savedBook', data=> {console.log('update')}, 
-    socket.emit('event', volumeInfo.title)   
-    )
-  } 
+  sendUpdate: function (volumeInfo, cb) {
+    socket.on('savedBook', data => cb(data))
+    
+    // only if there is volumeInfo then emit
+    if(volumeInfo) {
+    
+    socket.emit('event', volumeInfo.title)  
+    }   
+}
 };
 
