@@ -33,7 +33,11 @@ function handleSubmit(event) {
 function handleFormSubmit(id) {
  const { volumeInfo } = result.filter(book => book.id === id)[0]
 
+//  Here we are passing volumeInfo content to API.js and we have to use a callback, so here we are actually logging the book title
+// This is used for socket.io
  API.sendUpdate(volumeInfo, (data) => console.log('received saved update: ', data))
+
+    // Saving the book details to the database
     API.saveBook({
       title: volumeInfo.title,
       authors: volumeInfo.authors,
@@ -75,7 +79,7 @@ function handleFormSubmit(id) {
           return <span key={author}>
           {author + '. '}
           </span>
-        }) :  <span>No authors to duisplay</span>}
+        }) :  <span className='noResults'>No authors to display</span>}
         </div>
         </div>
         <div className="col">

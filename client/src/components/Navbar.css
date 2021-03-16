@@ -21,3 +21,13 @@
 .e {
     color: #EA4335;
 }
+
+.logo {
+    height: 50px !important;
+    width: 50px !important;
+    margin-bottom: 8px;
+}
+
+.header {
+    color: #61DAFB;
+}
