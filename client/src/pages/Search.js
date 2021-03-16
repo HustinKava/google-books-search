@@ -3,15 +3,15 @@ import axios from 'axios';
 import API from '../utils/API';
 import Navbar from '../components/Navbar';
 import './Search.css';
-
+require('dotenv').config()
 
 function Search() {
   
   // Creating useState for books, results and api key
   const [book, setBook] = useState("");  
   const [result, setResult] = useState([]);  
-  const apiKey = 'AIzaSyA6C5xu1fdpTkDQbkwbWXsas3rh3_sXVIs'
-
+  
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
   // Creating a handle event that will set the book state
   function handleChange(event) {  
@@ -23,7 +23,7 @@ function Search() {
 // the books saved in the book state and set the result state with the searched books
 function handleSubmit(event) {  
   event.preventDefault();  
-  axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=20")  
+  axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=20")  
       .then(data => {   
           setResult(data.data.items);  
       }) 
