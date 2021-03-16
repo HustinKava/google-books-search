@@ -12,7 +12,6 @@ function Navbar() {
 
             <Link className="navbar-brand" id="brandNameStyling" to='/'>
                 <img src={logo} className='logo' alt="logo" />
-                <span className='header'>Reactive </span>
                 <span className='G'>G</span>
                 <span className='o1'>o</span>
                 <span className='o2'>o</span>

@@ -28,7 +28,7 @@ function Saved() {
   return (
     <div>
       <Navbar/>
-      <h1 className='text-center'>Saved Books!</h1>
+      <h1 className='text-center heading'>Saved Books!</h1>
       <div className='container'>
       {books.length ? (
               <div>
@@ -36,41 +36,41 @@ function Saved() {
                   <div className="container" key={book._id}>
                     <div className='card'>
                     <div className="row first">
-                    <div className="col-10">
                     <div className='left'>   
                      
                     <h5>
-                      {book.title}
+                      <i>{book.title}</i>
                     </h5>
-                    <span>Authors: </span>
+                    <span className='top-text'>Authors: </span>
                     {book.authors ? book.authors.map(author => {
-                    return <span key={author}>
+                    return <span className='top-text' key={author}>
                     {author + '. '}
                     </span>
-                    }) :  <span>No authors to display</span>}                    
+                    }) :  <span className='top-text'>No authors to display</span>}                    
 
                     </div>
-                    </div>
 
-                    <div className="col">
-                    <div className='float-right right'>
-                    <a href={book.link} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-secondary btn-sm">View</button></a>
+                    <div className='right'>
+                    <a href={book.link} target='_blank' rel='noopener noreferrer'><button type="button" className="btn btn-lg">
+                    <i className="fa fa-external-link" aria-hidden="true"></i>
+                    </button></a>
+
                     <div className='divider'/>
-                    <button onClick={() => deleteBook(book._id)} type="button" className="close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    
+                    <button onClick={() => deleteBook(book._id)} type="button" className="btn btn-lg" aria-label="Close">
+                    <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
-                    </div>
                     </div>
                     </div>
                     
                     <div className="row">
-                      <div className="col">
-                        <div className='text-center'>
+                      <div className="col bottom">
+                        <div className='text-center center-image'>
                       <img className='savedImage' src={book.image} alt={book.title}/>
                         </div>
                       </div>
                       <div className="col-9">
-                      <p>
+                      <p className='description'>
                       {book.description ? book.description : <span>No description available</span>}
                       </p>
                       </div>
@@ -81,7 +81,7 @@ function Saved() {
                 ))}
               </div>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className='heading'>No Results to Display</h3>
             )}
 
       </div>
